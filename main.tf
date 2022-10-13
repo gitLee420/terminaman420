@@ -40,6 +40,23 @@ resource "aws_route_table_association" "public-route-table" {
  route_table_id = aws_route_table.public-route-table.id
 }
 
+resource "aws_route_table" "prod-route-table" {
+ vpc_id = aws_vpc.prod-vpc.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.gw.id
+  }
+
+  route {
+    ipv6_cidr_block = "::/0"
+    gateway_id      = aws_internet_gateway.gw.id
+ }
+
+  tags = {
+    Name = "Prod"
+   }
+}
 
 
 
@@ -55,7 +72,7 @@ vpc_id            = aws_vpc.prod-vpc.id
 
 
 
-resource "aws_subnet" "subnet-2" {
+resource "aws_subnet" "subnet-1" {
 vpc_id            = aws_vpc.prod-vpc.id
  cidr_block        = "192.168.64.0/18"
   availability_zone = "ap-southeast-1b"
@@ -65,7 +82,7 @@ vpc_id            = aws_vpc.prod-vpc.id
    }
 }
 
-resource "aws_subnet" "subnet-3" {
+resource "aws_subnet" "subnet-1" {
 vpc_id            = aws_vpc.prod-vpc.id
  cidr_block        = "192.168.128.0/18"
   availability_zone = "ap-souteast-1c"
@@ -75,7 +92,7 @@ vpc_id            = aws_vpc.prod-vpc.id
    }
 }
 
-resource "aws_subnet" "subnet-4" {
+resource "aws_subnet" "subnet-1" {
 vpc_id            = aws_vpc.prod-vpc.id
  cidr_block        = "192.168.192.0/18"
   availability_zone = "ap-souteast-1a"
