@@ -11,13 +11,13 @@ resource "aws_vpc" "prod-vpc" {
   }
 }
 resource "aws_internet_gateway" "gw" {
-  vpc_id = "lee420vpctest"
+  vpc_id = aws_vpc.prod-vpc.id
 
 
 }
 
 resource "aws_route_table" "public-route-table" {
- vpc_id = "lee420vpctest"
+ vpc_id = aws_vpc.prod-vpc.id
 
   route {
     cidr_block = "0.0.0.0/0"
