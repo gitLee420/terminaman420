@@ -72,7 +72,7 @@ vpc_id            = aws_vpc.prod-vpc.id
 
 
 
-resource "aws_subnet" "subnet-1" {
+resource "aws_subnet" "subnet-2" {
 vpc_id            = aws_vpc.prod-vpc.id
  cidr_block        = "192.168.64.0/18"
   availability_zone = "ap-southeast-1b"
@@ -82,20 +82,20 @@ vpc_id            = aws_vpc.prod-vpc.id
    }
 }
 
-resource "aws_subnet" "subnet-1" {
+resource "aws_subnet" "subnet-3" {
 vpc_id            = aws_vpc.prod-vpc.id
  cidr_block        = "192.168.128.0/18"
-  availability_zone = "ap-souteast-1c"
+  availability_zone = "ap-southeast-1c"
 
  tags = {
     Name = "reserved1-subnet-420"
    }
 }
 
-resource "aws_subnet" "subnet-1" {
+resource "aws_subnet" "subnet-4" {
 vpc_id            = aws_vpc.prod-vpc.id
  cidr_block        = "192.168.192.0/18"
-  availability_zone = "ap-souteast-1a"
+  availability_zone = "ap-southeast-1a"
 
  tags = {
     Name = "reserved2-subnet-420"
